@@ -1,4 +1,4 @@
-name: 🆕 Notificación: Creación de Nuevo Cliente
+name: 🆕 Notificación:Creación de Nuevo Cliente
 
 on:
   workflow_dispatch:
