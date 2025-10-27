@@ -1,4 +1,4 @@
-name: 🔁 Notificación: Actualización de Cliente Recurrente
+name: 🔁 Notificación:Actualización de Cliente Recurrente
 
 on:
   workflow_dispatch:
