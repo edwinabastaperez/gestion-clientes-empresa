@@ -1,4 +1,4 @@
-name: 🔎 Notificación: Consulta de Cliente
+name: 🔎 Notificación:Consulta de Cliente
 
 on:
   workflow_dispatch:
