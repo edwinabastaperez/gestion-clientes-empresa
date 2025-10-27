@@ -1,0 +1,25 @@
+name: 🔁 Notificación: Actualización de Cliente Recurrente
+
+on:
+  workflow_dispatch:
+    inputs:
+      client_name:
+        description: 'Nombre del cliente recurrente'
+        required: true
+        default: 'Cliente Recurrente Demo'
+
+jobs:
+  notify_team:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 💬 Notificación al equipo sobre actualización
+        run: |
+          CLIENTE_ACTUALIZADO="${{ github.event.inputs.client_name }}"
+          echo "=========================================================="
+          echo "⚠️ Tarea de Seguimiento: Cliente Recurrente Actualizado ⚠️"
+          echo "Cliente: $CLIENTE_ACTUALIZADO"
+          echo "----------------------------------------------------------"
+          echo "Miembros Notificados:"
+          echo "- Ana García (Dev): Confirmar la nueva solicitud de servicio."
+          echo "- Carlos Martínez (QA): Asegurar la integridad del archivo tras la actualización."
+          echo "=========================================================="

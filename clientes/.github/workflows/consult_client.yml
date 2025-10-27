@@ -1,0 +1,31 @@
+name: 🔎 Notificación: Consulta de Cliente
+
+on:
+  workflow_dispatch:
+    inputs:
+      client_name:
+        description: 'Nombre del cliente consultado'
+        required: true
+        default: 'Cliente Buscado Demo'
+      user_name:
+        description: 'Usuario que realizó la consulta'
+        required: true
+        default: 'Usuario del Sistema'
+
+jobs:
+  notify_team:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 💬 Notificación al equipo sobre consulta
+        run: |
+          CLIENTE_CONSULTADO="${{ github.event.inputs.client_name }}"
+          USUARIO_CONSULTA="${{ github.event.inputs.user_name }}"
+          echo "=========================================================="
+          echo "👀 Registro de Actividad: Consulta de Cliente 👀"
+          echo "Cliente: $CLIENTE_CONSULTADO"
+          echo "Usuario que Consultó: $USUARIO_CONSULTA"
+          echo "----------------------------------------------------------"
+          echo "Miembros Notificados:"
+          echo "- Ana García (Dev): Supervisar actividad."
+          echo "- Carlos Martínez (QA): Monitorear accesos al sistema."
+          echo "=========================================================="
