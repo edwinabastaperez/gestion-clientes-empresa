@@ -6,7 +6,9 @@ on:
       client_name:
         description: 'Nombre del cliente recurrente'
         required: true
-        default: 'Cliente Recurrente Demo'
+      new_request:
+        description: 'Descripción de la nueva solicitud'
+        required: true
 
 jobs:
   notify_team:
@@ -14,12 +16,12 @@ jobs:
     steps:
       - name: 💬 Notificación al equipo sobre actualización
         run: |
-          CLIENTE_ACTUALIZADO="${{ github.event.inputs.client_name }}"
           echo "=========================================================="
-          echo "⚠️ Tarea de Seguimiento: Cliente Recurrente Actualizado ⚠️"
-          echo "Cliente: $CLIENTE_ACTUALIZADO"
+          echo "⭐ ACCIÓN REQUERIDA: Solicitud de Cliente Recurrente ⭐"
+          echo "Cliente: ${{ github.event.inputs.client_name }}"
+          echo "Solicitud: ${{ github.event.inputs.new_request }}"
           echo "----------------------------------------------------------"
           echo "Miembros Notificados:"
-          echo "- Ana García (Dev): Confirmar la nueva solicitud de servicio."
-          echo "- Carlos Martínez (QA): Asegurar la integridad del archivo tras la actualización."
+          echo "- Ana García (Dev): Procesar la nueva solicitud."
+          echo "- Carlos Martínez (QA): Realizar pruebas de regresión."
           echo "=========================================================="
