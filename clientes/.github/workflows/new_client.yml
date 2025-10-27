@@ -1,0 +1,28 @@
+name: 🆕 Notificación: Creación de Nuevo Cliente
+
+on:
+  # Permite ejecutar este flujo manualmente desde la pestaña Actions de GitHub
+  workflow_dispatch:
+    inputs:
+      client_name:
+        description: 'Nombre del nuevo cliente'
+        required: true
+        default: 'Cliente Demo Nuevo'
+
+jobs:
+  notify_team:
+    # El trabajo se ejecuta en un servidor virtual de Ubuntu
+    runs-on: ubuntu-latest
+    steps:
+      - name: 💬 Notificación al equipo sobre nuevo cliente
+        # El comando 'run' simula la notificación mostrando un mensaje en el log
+        run: |
+          CLIENTE_CREADO="${{ github.event.inputs.client_name }}"
+          echo "=========================================================="
+          echo "🚨 ACCIÓN REQUERIDA: Nuevo Cliente Creado 🚨"
+          echo "Cliente: $CLIENTE_CREADO"
+          echo "----------------------------------------------------------"
+          echo "Miembros Notificados:"
+          echo "- Ana García (Dev): Revisar alta y datos iniciales."
+          echo "- Carlos Martínez (QA): Verificar la generación del archivo."
+          echo "=========================================================="
