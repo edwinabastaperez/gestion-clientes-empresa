@@ -130,7 +130,7 @@ def main_menu():
 
     while True:
         print("\n=======================================================")
-        print("SISTEMA DE GESTIÓN DE CLIENTES - MENU FINAL AUTOMATIZADO")
+        print("SISTEMA DE GESTIÓN DE CLIENTES - MENU FINAL DE EDWIN LISTO")
         print("=======================================================")
         print("1. Registrar Nuevo Cliente")
         print("2. Registrar Nueva Solicitud (Cliente Recurrente)")
