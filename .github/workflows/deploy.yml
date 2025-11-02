@@ -31,5 +31,5 @@ jobs:
           aws ssm send-command \
             --instance-ids "i-097fee31856847dd2" \
             --document-name "AWS-RunShellScript" \
-            --parameters 'commands=["cd /home/ec2-user/gestion-clientes-empresa", "git pull origin main", "python3 ./client_manager.py"]' \
+            --parameters 'commands=["sudo pkill -f client_manager.py", "cd /home/ec2-user/gestion-clientes-empresa", "git pull origin main", "python3 ./client_manager.py"]' \
             --comment "Despliegue automático desde GitHub Actions"
