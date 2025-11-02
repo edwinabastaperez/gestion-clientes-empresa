@@ -1,0 +1,35 @@
+# Archivo: .github/workflows/deploy.yml
+name: CD - Despliegue en EC2
+
+on:
+  # Se ejecuta automáticamente en cada commit a la rama 'main'
+  push:
+    branches:
+      - main
+  # Permite ejecutarlo manualmente desde la pestaña Actions
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del Código
+        # Descarga el código del repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Credenciales de AWS
+        # Usa los secretos de GitHub que acabas de crear (AWS_ACCESS_KEY_ID y AWS_SECRET_ACCESS_KEY)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-2 # Región Ohio, confirmada en tus capturas
+
+      - name: Desplegar y Ejecutar Comandos en EC2
+        # Usa AWS SSM para ejecutar comandos remotos en tu instancia
+        run: |
+          aws ssm send-command \
+            --instance-ids "i-097fee31856847dd2" \
+            --document-name "AWS-RunShellScript" \
+            --parameters 'commands=["cd /home/ec2-user/gestion-clientes-empresa", "git pull origin main", "python3 client_manager.py"]' \
+            --comment "Despliegue automático desde GitHub Actions"
